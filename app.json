@@ -1,5 +1,20 @@
+// {
+//   "expo": {
+//     "sdkVersion": "27.0.0"
+//   }
+// }
+
 {
   "expo": {
-    "sdkVersion": "27.0.0"
+   "name": "Learn React Ntaive",
+   "version": "1.0.0",
+   "slug": "learn-react-native",
+   "sdkVersion": "27.0.0",
+   "ios": {
+     "bundleIdentifier": "com.powergate.learnreactnative"
+   },
+   "android": {
+     "package": "com.powergate.learnreactnative"
+   }
   }
 }

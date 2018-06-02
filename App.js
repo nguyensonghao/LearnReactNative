@@ -8,7 +8,7 @@ import AppNavigator from './src/Navigation';
 import reducer from './src/reducers';
 const store = createStore(reducer);
 
-export default class App extends React.Component {
+class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { loading: true };
@@ -40,3 +40,5 @@ export default class App extends React.Component {
     	);
   	}
 }
+
+export default App;

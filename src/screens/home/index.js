@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 
 import Loading from '../../components/loading';
 import { getList } from '../../helpers/product';
+import { showAlert } from '../../helpers/util';
+import { STATUS_SUCCESS } from '../../contansts/config';
+import { CONNECT_API_FAIL } from '../../contansts/message';
 import style from './style'; 
 import Item from './item';
 import * as actions from '../../actions/product';
@@ -19,11 +22,17 @@ class Home extends Component {
 
     componentDidMount () {
         getList().then(result => {
-            this.setState({
-                isLoading: false
-            })
-
-            this.props.dispatch(actions.getList(result.data));
+            if (result.status == STATUS_SUCCESS) {
+                this.setState({
+                    isLoading: false
+                })
+    
+                this.props.dispatch(actions.getList(result.data));
+            } else {
+                showAlert(CONNECT_API_FAIL);
+            }
+        }).catch(e => {
+            showAlert(CONNECT_API_FAIL);
         })
     }
 

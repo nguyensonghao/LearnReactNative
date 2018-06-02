@@ -4,7 +4,9 @@ import { Container } from 'native-base';
 import { connect } from 'react-redux';
 
 import { getDetail } from '../../helpers/product';
-import { upercaseFirst } from '../../helpers/util';
+import { upercaseFirst, showAlert } from '../../helpers/util';
+import { STATUS_SUCCESS } from '../../contansts/config';
+import { CONNECT_API_FAIL } from '../../contansts/message';
 import * as actions from '../../actions/product';
 import Loading from '../../components/loading';
 import style from './style';
@@ -20,10 +22,16 @@ class Detail extends Component {
 
     componentDidMount() {
         getDetail(this.id).then(result => {
-            this.props.dispatch(actions.getProduct(result.data));
-            this.setState({
-                isLoading: false
-            })
+            if (result.status == STATUS_SUCCESS) {
+                this.props.dispatch(actions.getProduct(result.data));
+                this.setState({
+                    isLoading: false
+                })
+            } else {
+                showAlert(CONNECT_API_FAIL);
+            }
+        }).catch (e => {
+            showAlert(CONNECT_API_FAIL);
         })
     }
 
