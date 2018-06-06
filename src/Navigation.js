@@ -3,6 +3,7 @@ import { createStackNavigator, StatusBar } from 'react-navigation';
 import Home from './screens/home';
 import Detail from './screens/detail';
 import LoginSocial from './screens/loginSocial';
+import Camera from './screens/camera';
 
 export default RootStack = createStackNavigator(
   	{
@@ -33,9 +34,18 @@ export default RootStack = createStackNavigator(
 					backgroundColor: '#1E88E5'
 				}
 			}),
+		},
+		Camera: {
+			screen: Camera,
+			navigationOptions: ({ navigation }) => ({
+				title: 'Camera',
+				headerStyle: {
+					backgroundColor: '#1E88E5'
+				}
+			}),
 		}
   	},
   	{
-    	initialRouteName: 'LoginSocial',
+    	initialRouteName: 'Camera',
 	}
 );
