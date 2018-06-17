@@ -4,6 +4,7 @@ import Home from './screens/home';
 import Detail from './screens/detail';
 import LoginSocial from './screens/loginSocial';
 import Camera from './screens/camera';
+import Map from './screens/map';
 
 export default RootStack = createStackNavigator(
   	{
@@ -43,9 +44,18 @@ export default RootStack = createStackNavigator(
 					backgroundColor: '#1E88E5'
 				}
 			}),
-		}
+        },
+        Map: {
+            screen: Map,
+            navigationOptions: ({ navigation }) => ({
+                title: 'Map',
+                headerStyle: {
+                    backgroundColor: '#1E88E5'
+                }
+            }),
+        }
   	},
   	{
-    	initialRouteName: 'Camera',
+        initialRouteName: 'Map'
 	}
 );
